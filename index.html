@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MatriCare - Your 9-Month Companion for a Healthy Pregnancy. Daily solutions, month-by-month guides, and smart tools for expectant mothers.">
+    <meta name="keywords" content="pregnancy care, pregnancy solutions, 9 month guide, healthy pregnancy, maternal health">
+    <meta name="theme-color" content="#F8E5F0">
+    <title>MatriCare - Smart Pregnancy Support & 9-Month Guide</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-logo">
+                <span class="logo-text">MatriCare</span>
+            </div>
+            <button class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#problems" class="nav-link">Solutions</a></li>
+                <li><a href="#month-guide" class="nav-link">Month Guide</a></li>
+                <li><a href="#tools" class="nav-link">Tools</a></li>
+                <li><a href="#nutrition" class="nav-link">Nutrition</a></li>
+                <li><a href="#exercise" class="nav-link">Exercise</a></li>
+                <li><a href="#faq" class="nav-link">FAQ</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">Your 9-Month Companion for a Healthy Pregnancy</h1>
+                <p class="hero-subtitle">Daily solutions, month-by-month guides, and smart tools to make pregnancy easier.</p>
+                <button class="cta-button" onclick="document.getElementById('problems').scrollIntoView({ behavior: 'smooth' })">Start Your Journey</button>
+            </div>
+            <div class="hero-illustration">
+                <div class="illustration-placeholder">
+                    <svg viewBox="0 0 200 280" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Pregnant woman illustration -->
+                        <circle cx="100" cy="50" r="20" fill="#FFB6D9"/>
+                        <path d="M 100 70 Q 90 90 85 120 Q 80 150 90 180 L 100 200 L 110 180 Q 120 150 115 120 Q 110 90 100 70" fill="#E8B4D4"/>
+                        <path d="M 85 100 L 70 110 L 75 125 L 90 115" fill="#FFB6D9"/>
+                        <path d="M 115 100 L 130 110 L 125 125 L 110 115" fill="#FFB6D9"/>
+                        <circle cx="100" cy="130" r="35" fill="#C5E8F0" opacity="0.6"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Daily Problems & Smart Solutions -->
+    <section id="problems" class="problems-section">
+        <div class="container">
+            <h2 class="section-title">Daily Problems & Smart Solutions</h2>
+            <p class="section-subtitle">Solutions for common pregnancy challenges</p>
+            <div class="problems-grid" id="problemsGrid">
+                <!-- Problems will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Month-by-Month Guide -->
+    <section id="month-guide" class="month-guide-section">
+        <div class="container">
+            <h2 class="section-title">Month-by-Month Pregnancy Guide</h2>
+            <p class="section-subtitle">Your trimester-wise journey through pregnancy</p>
+            <div class="trimester-tabs">
+                <button class="tab-button active" data-trimester="1">Trimester 1<br><small>(Months 1-3)</small></button>
+                <button class="tab-button" data-trimester="2">Trimester 2<br><small>(Months 4-6)</small></button>
+                <button class="tab-button" data-trimester="3">Trimester 3<br><small>(Months 7-9)</small></button>
+            </div>
+            <div class="months-grid" id="monthsGrid">
+                <!-- Months will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Smart Tools -->
+    <section id="tools" class="tools-section">
+        <div class="container">
+            <h2 class="section-title">Smart Pregnancy Tools</h2>
+            <p class="section-subtitle">Interactive tools to track your pregnancy</p>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <div class="tool-icon">📅</div>
+                    <h3>Due Date Calculator</h3>
+                    <p>Calculate your due date based on your last menstrual period</p>
+                    <button class="tool-button" onclick="openTool('due-date')">Open Tool</button>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">⚖️</div>
+                    <h3>Weight Tracker</h3>
+                    <p>Track healthy weight gain throughout your pregnancy</p>
+                    <button class="tool-button" onclick="openTool('weight')">Open Tool</button>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">👣</div>
+                    <h3>Kick Counter</h3>
+                    <p>Monitor your baby's movement and kicks</p>
+                    <button class="tool-button" onclick="openTool('kick-counter')">Open Tool</button>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">⏱️</div>
+                    <h3>Contraction Timer</h3>
+                    <p>Track contractions and time intervals</p>
+                    <button class="tool-button" onclick="openTool('contraction')">Open Tool</button>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">😊</div>
+                    <h3>Mood Tracker</h3>
+                    <p>Track your emotional wellbeing during pregnancy</p>
+                    <button class="tool-button" onclick="openTool('mood')">Open Tool</button>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">💧</div>
+                    <h3>Water Intake Tracker</h3>
+                    <p>Stay hydrated throughout your day</p>
+                    <button class="tool-button" onclick="openTool('water')">Open Tool</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Diet & Nutrition Section -->
+    <section id="nutrition" class="nutrition-section">
+        <div class="container">
+            <h2 class="section-title">Diet & Nutrition During Pregnancy</h2>
+            <p class="section-subtitle">Vegetarian and non-vegetarian options</p>
+            
+            <div class="nutrition-tabs">
+                <button class="nutrition-tab active" data-type="vegetarian">Vegetarian</button>
+                <button class="nutrition-tab" data-type="non-veg">Non-Vegetarian</button>
+                <button class="nutrition-tab" data-type="nutrients">Key Nutrients</button>
+            </div>
+
+            <div class="nutrition-content">
+                <div class="nutrition-panel active" id="vegetarian-panel">
+                    <h3>Vegetarian Foods to Eat</h3>
+                    <div class="food-list">
+                        <div class="food-item">
+                            <span class="food-icon">🥬</span>
+                            <div>
+                                <strong>Leafy Greens</strong>
+                                <p>Spinach, kale, broccoli - rich in folate and calcium</p>
+                            </div>
+                        </div>
+                        <div class="food-item">
+                            <span class="food-icon">🫘</span>
+                            <div>
+                                <strong>Legumes</strong>
+                                <p>Lentils, chickpeas, beans - excellent protein source</p>
+                            </div>
+                        </div>
+                        <div class="food-item">
+                            <span class="food-icon">🥛</span>
+                            <div>
+                                <strong>Dairy Products</strong>
+                                <p>Milk, yogurt, paneer - calcium and protein</p>
+                            </div>
+                        </div>
+                        <div class="food-item">
+                            <span class="food-icon">🥜</span>
+                            <div>
+                                <strong>Nuts & Seeds</strong>
+                                <p>Almonds, walnuts, sesame - omega-3 and minerals</p>
+                            </div>
+                        </div>
+                        <div class="food-item">
+                            <span class="food-icon">🥕</span>
+                            <div>
+                                <strong>Vegetables</strong>
+                                <p>Carrots, sweet potato - beta-carotene for baby's vision</p>
+                            </div>
+                        </div>
+                        <div class="food-item">
+                            <span class="food-icon">🍎</span>
+                            <div>
+                                <strong>Fruits</strong>
+                                <p>Apples, oranges, berries - vitamins and fiber</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="nutrition-panel" id="non-veg-panel">
+                    <h3>Non-Vegetarian Foods to Eat</h3>
+                    <div class="food-list">
+                        <div class="food-item">
+                            <span class="food-icon">🍗</span>
+                            <div>
+                                <strong>Chicken & Poultry</strong>
+                                <p>Lean protein, vitamin B12, and iron</p>
+                            </div>
+                        </div>
+                        <div class="food-item">
+                            <span class="food-icon">🐟</span>
+                            <div>
+                                <strong>Fish & Seafood</strong>
+                                <p>Salmon, sardines - omega-3 for brain development</p>
+                            </div>
+                        </div>
+                        <div class="food-item">
+                            <span class="food-icon">🥚</span>
+                            <div>
+                                <strong>Eggs</strong>
+                                <p>Complete protein, choline for fetal brain development</p>
+                            </div>
+                        </div>
+                        <div class="food-item">
+                            <span class="food-icon">🥩</span>
+                            <div>
+                                <strong>Lean Meat</strong>
+                                <p>Beef, mutton - iron and protein (well-cooked)</p>
+                            </div>
+                        </div>
+                        <div class="food-item">
+                            <span class="food-icon">🥛</span>
+                            <div>
+                                <strong>Dairy Products</strong>
+                                <p>Milk, cheese, yogurt - calcium and protein</p>
+                            </div>
+                        </div>
+                        <div class="food-item">
+                            <span class="food-icon">🫘</span>
+                            <div>
+                                <strong>Legumes & Pulses</strong>
+                                <p>Moong dal, chana - plant-based protein</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="nutrition-panel" id="nutrients-panel">
+                    <h3>Key Nutrients for Pregnancy</h3>
+                    <div class="nutrients-grid">
+                        <div class="nutrient-card">
+                            <h4>Iron</h4>
+                            <p>Prevents anemia and supports oxygen transport</p>
+                            <strong>Sources:</strong> Red meat, spinach, lentils, fortified cereals
+                        </div>
+                        <div class="nutrient-card">
+                            <h4>Calcium</h4>
+                            <p>Builds baby's bones and teeth</p>
+                            <strong>Sources:</strong> Milk, yogurt, cheese, leafy greens
+                        </div>
+                        <div class="nutrient-card">
+                            <h4>Folate</h4>
+                            <p>Prevents neural tube defects</p>
+                            <strong>Sources:</strong> Leafy greens, asparagus, broccoli, legumes
+                        </div>
+                        <div class="nutrient-card">
+                            <h4>Protein</h4>
+                            <p>Essential for baby's growth and development</p>
+                            <strong>Sources:</strong> Meat, fish, eggs, legumes, dairy
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Exercise & Yoga Section -->
+    <section id="exercise" class="exercise-section">
+        <div class="container">
+            <h2 class="section-title">Safe Exercises & Yoga</h2>
+            <p class="section-subtitle">Trimester-wise exercises for a healthy pregnancy</p>
+            
+            <div class="exercise-tabs">
+                <button class="exercise-tab active" data-trimester="1">1st Trimester</button>
+                <button class="exercise-tab" data-trimester="2">2nd Trimester</button>
+                <button class="exercise-tab" data-trimester="3">3rd Trimester</button>
+            </div>
+
+            <div class="exercises-grid" id="exercisesGrid">
+                <!-- Exercises populated by JavaScript -->
+            </div>
+
+            <div class="safety-warning">
+                <h3>⚠️ Safety Guidelines</h3>
+                <ul>
+                    <li>Always consult your doctor before starting any exercise program</li>
+                    <li>Avoid exercises in supine position (lying flat on back) after first trimester</li>
+                    <li>Avoid high-impact activities like jumping or running</li>
+                    <li>Stay hydrated and exercise in a cool environment</li>
+                    <li>Stop immediately if you experience pain, dizziness, or shortness of breath</li>
+                    <li>Wear comfortable, supportive clothing</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+
+  
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      padding: 20px;
+    }
+    .doctor-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0px;
+      justify-content: center;
+    }
+    .doctor-card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      text-align: center;
+      width: 250px;
+      margin:1rem;
+    }
+    .doctor-card h2 {
+      margin: 0;
+      color: #333;
+    }
+    .doctor-card p {
+      color: #555;
+      margin: 5px 0;
+    }
+    .whatsapp-btn {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 15px;
+      background: #fb52a1;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    .whatsapp-btn:hover {
+      background: #f8b5d4;
+    }
+  </style>
+</head>
+<body>
+  <h1 style="text-align:center;">Consult Our Doctors</h1>
+  <div class="doctor-list">
+    
+    <div class="doctor-card">
+      <h2>Dr. Anil Sharma</h2>
+      <p>Specialist: Radiolist</p>
+      <p>Experience: 15 years</p>
+      <p>Location: Kathmandu, Nepal</p>
+      <a class="whatsapp-btn" href="https://wa.me/9779812345678" target="_blank">Consult on WhatsApp</a>
+    </div>
+
+    <div class="doctor-card">
+      <h2>Dr. Priya Koirala</h2>
+      <p>Specialist: gyenocologist</p>
+      <p>Experience: 10 years</p>
+      <p>Location: Pokhara, Nepal</p>
+      <a class="whatsapp-btn" href="https://wa.me/9779823456789" target="_blank">Consult on WhatsApp</a>
+    </div>
+
+    <div class="doctor-card">
+      <h2>Dr. Ramesh Thapa</h2>
+      <p>Specialist:General Physician </p>
+      <p>Experience: 12 years</p>
+      <p>Location: Lalitpur, Nepal</p>
+      <a class="whatsapp-btn" href="https://wa.me/9779834567890" target="_blank">Consult on WhatsApp</a>
+    </div>
+
+    <div class="doctor-card">
+      <h2>Dr. Sita Gurung</h2>
+      <p>Specialist: midwife</p>
+      <p>Experience: 8 years</p>
+      <p>Location: Biratnagar, Nepal</p>
+      <a class="whatsapp-btn" href="https://wa.me/9779845678901" target="_blank">Consult on WhatsApp</a>
+    </div>
+
+    <div class="doctor-card">
+      <h2>Dr. Rajesh Bhandari</h2>
+      <p>Specialist:Dietation </p>
+      <p>Experience: 18 years</p>
+      <p>Location: Chitwan, Nepal</p>
+      <a class="whatsapp-btn" href="https://wa.me/9779856789012" target="_blank">Consult on WhatsApp</a>
+    </div>
+
+  </div>
+
+
+    <!-- Emergency Warning Signs -->
+    <section class="emergency-section">
+        <div class="container">
+            <h2 class="section-title">Emergency Warning Signs</h2>
+            <p class="section-subtitle">Seek immediate medical attention for these symptoms</p>
+            
+            <div class="warning-grid">
+                <div class="warning-card danger">
+                    <div class="warning-icon">🩸</div>
+                    <h3>Heavy Bleeding</h3>
+                    <p>Vaginal bleeding heavier than a normal period</p>
+                </div>
+                <div class="warning-card danger">
+                    <div class="warning-icon">🤕</div>
+                    <h3>Severe Abdominal Pain</h3>
+                    <p>Sharp, severe pain in the abdomen or pelvis</p>
+                </div>
+                <div class="warning-card danger">
+                    <div class="warning-icon">👁️</div>
+                    <h3>Blurred Vision</h3>
+                    <p>Sudden vision changes or light sensitivity</p>
+                </div>
+                <div class="warning-card danger">
+                    <div class="warning-icon">💪</div>
+                    <h3>Sudden Swelling</h3>
+                    <p>Swelling in face, hands, or sudden weight gain</p>
+                </div>
+                <div class="warning-card danger">
+                    <div class="warning-icon">🌡️</div>
+                    <h3>High Fever</h3>
+                    <p>Temperature above 101°F (38.3°C)</p>
+                </div>
+                <div class="warning-card danger">
+                    <div class="warning-icon">👶</div>
+                    <h3>No Fetal Movement</h3>
+                    <p>No baby movement after 20 weeks for more than a few hours</p>
+                </div>
+            </div>
+
+            <div class="emergency-contact">
+                <h3>Emergency Contacts</h3>
+                <p><strong>Call 911 or your local emergency number immediately</strong> if you experience any of the above symptoms.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mental Health & Emotional Support -->
+    <section class="mental-health-section">
+        <div class="container">
+            <h2 class="section-title">Emotional & Mental Health Support</h2>
+            <p class="section-subtitle">Taking care of your mental wellbeing during pregnancy</p>
+
+            <div class="mental-health-grid">
+                <div class="health-card">
+                    <div class="health-icon">🧘</div>
+                    <h3>Stress Management</h3>
+                    <p>Practice meditation, deep breathing, and relaxation techniques to reduce stress and anxiety</p>
+                </div>
+                <div class="health-card">
+                    <div class="health-icon">💬</div>
+                    <h3>Communication with Partner</h3>
+                    <p>Share your feelings and concerns with your partner regularly. Open communication strengthens your bond</p>
+                </div>
+                <div class="health-card">
+                    <div class="health-icon">😊</div>
+                    <h3>Mood Uplift Ideas</h3>
+                    <p>Listen to music, spend time in nature, pursue hobbies, and connect with friends and family</p>
+                </div>
+                <div class="health-card">
+                    <div class="health-icon">🌙</div>
+                    <h3>Relaxation Techniques</h3>
+                    <p>Try prenatal massage, warm baths, gentle yoga, or aromatherapy for relaxation</p>
+                </div>
+                <div class="health-card">
+                    <div class="health-icon">👨‍👩‍👧</div>
+                    <h3>Support Groups</h3>
+                    <p>Join prenatal classes and support groups to connect with other pregnant women</p>
+                </div>
+                <div class="health-card">
+                    <div class="health-icon">⚠️</div>
+                    <h3>Postpartum Depression</h3>
+                    <p>Awareness is key. Know the signs and don't hesitate to seek professional help after birth</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq-section">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <p class="section-subtitle">Answers to common pregnancy questions</p>
+
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Can I travel during pregnancy?</span>
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Generally, travel is safe during the second trimester (weeks 14-20). Avoid travel in the first trimester (due to miscarriage risk) and third trimester (due to delivery risk). Always get your doctor's approval before traveling. If flying, book aisle seats, stay hydrated, and get up frequently to move around.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Which vaccines are safe during pregnancy?</span>
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Safe vaccines include flu shot and Tdap (tetanus, diphtheria, pertussis). These can be given during any trimester. Avoid live vaccines like MMR and varicella. Always consult your healthcare provider before getting any vaccine during pregnancy.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span>When should I go to the hospital?</span>
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Go to the hospital when labor begins (contractions every 5 minutes), your water breaks, you experience heavy bleeding, or have severe pain. In the third trimester, if contractions are regular and increasing in intensity, it's time to go. Also go if you have signs of emergency as listed in the warning signs section.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span>What are the recommended sleeping positions?</span>
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Sleep on your left side during pregnancy - this improves blood flow to the baby. Avoid sleeping on your back after the first trimester as it can restrict blood flow. Use pregnancy pillows for support. If you wake up on your back, simply roll to your side. Getting comfortable sleep is important for you and your baby.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Is morning sickness normal?</span>
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes, morning sickness is very common and affects about 70% of pregnant women. It usually starts around week 6 and improves by week 12. To manage it, eat small frequent meals, stay hydrated, get adequate rest, and avoid triggers. Ginger tea and B6 supplements may help. Contact your doctor if you're unable to keep any food down.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span>How much weight should I gain?</span>
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Recommended weight gain depends on your pre-pregnancy BMI: Normal BMI (25-35 lbs), Overweight (15-25 lbs), Obese (11-20 lbs), Underweight (28-40 lbs). Most weight gain occurs in the second and third trimesters. Eat a balanced diet and exercise regularly. Work with your healthcare provider to ensure healthy weight gain.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>MatriCare</h3>
+                    <p>Your trusted companion through all 9 months of pregnancy.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#problems">Solutions</a></li>
+                        <li><a href="#month-guide">Month Guide</a></li>
+                        <li><a href="#tools">Tools</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <ul>
+                        <li>Emergency: Call 911</li>
+                        <li>Doctor Hotline: 1-800-MATRICARE</li>
+                        <li>Email: support@matricare.com</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="medical-disclaimer">
+                <p><strong>Medical Disclaimer:</strong> This website provides general pregnancy information and is not a replacement for professional medical advice. Always consult with your healthcare provider for diagnosis and treatment of pregnancy-related conditions. In case of emergency, call 911 or go to your nearest emergency room.</p>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 MatriCare - Smart Pregnancy Support. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Tool Modal -->
+    <div class="modal" id="toolModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeTool()">&times;</button>
+            <div id="toolContent"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
