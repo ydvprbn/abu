@@ -30,6 +30,21 @@
                 <li><a href="#exercise" class="nav-link">Exercise</a></li>
                 <li><a href="#faq" class="nav-link">FAQ</a></li>
             </ul>
+            <div class="navbar-actions">
+                <div class="navbar-auth" id="navbarAuth">
+                    <button class="auth-btn login-btn" id="loginBtn" onclick="openAuthModal('login')">Login</button>
+                    <div class="user-info" id="userInfo">
+                        <span class="user-avatar" id="userAvatar">U</span>
+                        <span class="user-name" id="userNameDisplay">User</span>
+                        <button class="auth-btn logout-btn" id="logoutBtn" onclick="handleLogout()">Logout</button>
+                    </div>
+                </div>
+                <button class="menu-toggle" id="menuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
         </div>
     </nav>
 
@@ -592,6 +607,61 @@
             <div id="toolContent"></div>
         </div>
     </div>
+
+    <!-- Auth Modal -->
+    <div class="modal" id="authModal">
+        <div class="modal-content auth-modal-content">
+            <button class="modal-close" onclick="closeAuthModal()">&times;</button>
+
+            <div class="auth-tabs">
+                <button class="auth-tab active" id="loginTabBtn" onclick="switchAuthTab('login')">Login</button>
+                <button class="auth-tab" id="signupTabBtn" onclick="switchAuthTab('signup')">Sign Up</button>
+            </div>
+
+            <p class="auth-error" id="authError"></p>
+
+            <!-- Login Panel -->
+            <div class="auth-panel active" id="loginPanel">
+                <h3>Welcome Back</h3>
+                <form id="loginForm" onsubmit="handleLogin(event)">
+                    <div class="form-group">
+                        <label for="loginEmail">Email</label>
+                        <input type="email" id="loginEmail" required placeholder="you@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Password</label>
+                        <input type="password" id="loginPassword" required placeholder="Enter your password">
+                    </div>
+                    <button type="submit" class="auth-submit-btn">Login</button>
+                </form>
+                <p class="auth-switch-text">Don't have an account? <a href="#" onclick="switchAuthTab('signup'); return false;">Sign up</a></p>
+            </div>
+
+            <!-- Sign Up Panel -->
+            <div class="auth-panel" id="signupPanel">
+                <h3>Create Your Account</h3>
+                <form id="signupForm" onsubmit="handleSignup(event)">
+                    <div class="form-group">
+                        <label for="signupName">Full Name</label>
+                        <input type="text" id="signupName" required placeholder="Your name">
+                    </div>
+                    <div class="form-group">
+                        <label for="signupEmail">Email</label>
+                        <input type="email" id="signupEmail" required placeholder="you@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="signupPassword">Password</label>
+                        <input type="password" id="signupPassword" required placeholder="At least 6 characters">
+                    </div>
+                    <button type="submit" class="auth-submit-btn">Sign Up</button>
+                </form>
+                <p class="auth-switch-text">Already have an account? <a href="#" onclick="switchAuthTab('login'); return false;">Login</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTopBtn" onclick="scrollToTop()" aria-label="Back to top">↑</button>
 
     <script src="script.js"></script>
 </body>
