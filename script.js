@@ -486,6 +486,171 @@ function recordMood(mood) {
     `
 }
 
+// ==================== Authentication System ====================
+// NOTE: This is a client-side only demo (no backend/server). Accounts and
+// passwords are stored in the browser's localStorage, so this is meant for
+// demonstration purposes only and should not be used to store real user
+// credentials in a production app.
+const USERS_KEY = "matricareUsers"
+const SESSION_KEY = "matricareCurrentUser"
+
+function getUsers() {
+  return JSON.parse(localStorage.getItem(USERS_KEY) || "[]")
+}
+
+function saveUsers(users) {
+  localStorage.setItem(USERS_KEY, JSON.stringify(users))
+}
+
+function getCurrentUser() {
+  return JSON.parse(localStorage.getItem(SESSION_KEY) || "null")
+}
+
+function setCurrentUser(user) {
+  localStorage.setItem(SESSION_KEY, JSON.stringify(user))
+}
+
+function clearCurrentUser() {
+  localStorage.removeItem(SESSION_KEY)
+}
+
+// Lightweight, non-cryptographic hash so plain-text passwords aren't stored
+// directly. This is NOT secure encryption — for a real app, hash & verify
+// passwords on a server.
+function simpleHash(str) {
+  let hash = 0
+  for (let i = 0; i < str.length; i++) {
+    hash = (hash << 5) - hash + str.charCodeAt(i)
+    hash |= 0
+  }
+  return hash.toString()
+}
+
+const authModal = document.getElementById("authModal")
+const loginBtn = document.getElementById("loginBtn")
+const userInfo = document.getElementById("userInfo")
+const userNameDisplay = document.getElementById("userNameDisplay")
+const userAvatar = document.getElementById("userAvatar")
+const authError = document.getElementById("authError")
+
+function openAuthModal(tab = "login") {
+  switchAuthTab(tab)
+  authModal.style.display = "block"
+}
+
+function closeAuthModal() {
+  authModal.style.display = "none"
+  document.getElementById("loginForm").reset()
+  document.getElementById("signupForm").reset()
+  authError.textContent = ""
+}
+
+function switchAuthTab(tab) {
+  const loginPanel = document.getElementById("loginPanel")
+  const signupPanel = document.getElementById("signupPanel")
+  const loginTabBtn = document.getElementById("loginTabBtn")
+  const signupTabBtn = document.getElementById("signupTabBtn")
+  authError.textContent = ""
+
+  if (tab === "signup") {
+    signupPanel.classList.add("active")
+    loginPanel.classList.remove("active")
+    signupTabBtn.classList.add("active")
+    loginTabBtn.classList.remove("active")
+  } else {
+    loginPanel.classList.add("active")
+    signupPanel.classList.remove("active")
+    loginTabBtn.classList.add("active")
+    signupTabBtn.classList.remove("active")
+  }
+}
+
+function handleSignup(event) {
+  event.preventDefault()
+  const name = document.getElementById("signupName").value.trim()
+  const email = document.getElementById("signupEmail").value.trim().toLowerCase()
+  const password = document.getElementById("signupPassword").value
+
+  if (!name || !email || !password) {
+    authError.textContent = "Please fill in all fields."
+    return
+  }
+  if (password.length < 6) {
+    authError.textContent = "Password must be at least 6 characters."
+    return
+  }
+
+  const users = getUsers()
+  if (users.some((u) => u.email === email)) {
+    authError.textContent = "An account with this email already exists."
+    return
+  }
+
+  users.push({ name, email, passwordHash: simpleHash(password) })
+  saveUsers(users)
+  setCurrentUser({ name, email })
+  updateAuthUI()
+  closeAuthModal()
+}
+
+function handleLogin(event) {
+  event.preventDefault()
+  const email = document.getElementById("loginEmail").value.trim().toLowerCase()
+  const password = document.getElementById("loginPassword").value
+
+  const users = getUsers()
+  const user = users.find((u) => u.email === email)
+
+  if (!user || user.passwordHash !== simpleHash(password)) {
+    authError.textContent = "Incorrect email or password."
+    return
+  }
+
+  setCurrentUser({ name: user.name, email: user.email })
+  updateAuthUI()
+  closeAuthModal()
+}
+
+function handleLogout() {
+  clearCurrentUser()
+  updateAuthUI()
+}
+
+function updateAuthUI() {
+  const user = getCurrentUser()
+  if (user) {
+    loginBtn.style.display = "none"
+    userInfo.style.display = "flex"
+    userNameDisplay.textContent = user.name
+    userAvatar.textContent = user.name.charAt(0).toUpperCase()
+  } else {
+    loginBtn.style.display = "inline-block"
+    userInfo.style.display = "none"
+  }
+}
+
+// Close auth modal when clicking outside its content
+window.addEventListener("click", (event) => {
+  if (event.target === authModal) {
+    closeAuthModal()
+  }
+})
+
+// ==================== Back to Top Button ====================
+const backToTopBtn = document.getElementById("backToTopBtn")
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 300) {
+    backToTopBtn.classList.add("show")
+  } else {
+    backToTopBtn.classList.remove("show")
+  }
+})
+
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: "smooth" })
+}
+
 // Mobile Menu Toggle
 menuToggle.addEventListener("click", () => {
   navMenu.classList.toggle("active")
@@ -509,3 +674,4 @@ window.addEventListener("click", (event) => {
 populateProblems()
 populateMonths("1")
 populateExercises("1")
+updateAuthUI()
