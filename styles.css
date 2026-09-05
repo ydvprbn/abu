@@ -96,6 +96,77 @@ body {
   transition: var(--transition);
 }
 
+/* Navbar Actions (Auth + Menu Toggle) */
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Auth Buttons */
+.navbar-auth {
+  display: flex;
+  align-items: center;
+}
+
+.auth-btn {
+  background-color: var(--accent-pink);
+  color: var(--white);
+  border: none;
+  padding: 8px 22px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: var(--transition);
+}
+
+.auth-btn:hover {
+  background-color: #d65a8c;
+  transform: translateY(-1px);
+}
+
+.logout-btn {
+  background-color: transparent;
+  color: var(--accent-pink);
+  border: 2px solid var(--accent-pink);
+  padding: 6px 18px;
+}
+
+.logout-btn:hover {
+  background-color: var(--accent-pink);
+  color: var(--white);
+}
+
+.user-info {
+  display: none;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: var(--primary-pink);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.user-name {
+  font-weight: 600;
+  color: var(--dark-text);
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
 /* Hero Section */
 .hero {
   background: linear-gradient(135deg, var(--light-pink) 0%, var(--soft-lavender) 100%);
@@ -792,6 +863,159 @@ body {
   color: var(--accent-pink);
 }
 
+/* Auth Modal */
+.auth-modal-content {
+  max-width: 420px;
+}
+
+.auth-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid var(--light-pink);
+}
+
+.auth-tab {
+  flex: 1;
+  background: none;
+  border: none;
+  padding: 12px;
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--light-text);
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  transition: var(--transition);
+  margin-bottom: -2px;
+}
+
+.auth-tab.active {
+  color: var(--accent-pink);
+  border-bottom-color: var(--accent-pink);
+}
+
+.auth-tab:hover {
+  color: var(--accent-pink);
+}
+
+.auth-panel {
+  display: none;
+}
+
+.auth-panel.active {
+  display: block;
+}
+
+.auth-panel h3 {
+  color: var(--dark-text);
+  margin-bottom: 1.2rem;
+}
+
+.form-group {
+  margin-bottom: 1.2rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--dark-text);
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px 14px;
+  border: 2px solid var(--light-pink);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  transition: var(--transition);
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--accent-pink);
+}
+
+.auth-submit-btn {
+  width: 100%;
+  background-color: var(--accent-pink);
+  color: var(--white);
+  border: none;
+  padding: 12px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: var(--transition);
+  margin-top: 0.5rem;
+}
+
+.auth-submit-btn:hover {
+  background-color: #d65a8c;
+}
+
+.auth-switch-text {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: var(--light-text);
+}
+
+.auth-switch-text a {
+  color: var(--accent-pink);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.auth-switch-text a:hover {
+  text-decoration: underline;
+}
+
+.auth-error {
+  color: var(--danger-red);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  min-height: 1.2em;
+  text-align: center;
+}
+
+/* Back to Top Button */
+.back-to-top {
+  position: fixed;
+  right: 25px;
+  bottom: 25px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: var(--accent-pink);
+  color: var(--white);
+  border: none;
+  font-size: 1.4rem;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(15px);
+  transition: var(--transition);
+  z-index: 1500;
+}
+
+.back-to-top.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.back-to-top:hover {
+  background-color: #d65a8c;
+  transform: translateY(-3px);
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -837,6 +1061,22 @@ body {
 
   .menu-toggle {
     display: flex;
+  }
+
+  .user-name {
+    display: none;
+  }
+
+  .auth-btn {
+    padding: 7px 14px;
+    font-size: 0.8rem;
+  }
+
+  .back-to-top {
+    right: 15px;
+    bottom: 15px;
+    width: 42px;
+    height: 42px;
   }
 
   .hero-content {
